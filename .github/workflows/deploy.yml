@@ -12,18 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run composer install
-        run: |
-          composer clear-cache
-          composer install --no-dev --prefer-dist
       - name: Install npm packages
         run: |
-          npm ci
+          npm i
       - name: Build
         run: |
-          npm install
           npm run build
-          npm run i18n
       - name: Semantic release
         id: semantic
         uses: codfish/semantic-release-action@master
