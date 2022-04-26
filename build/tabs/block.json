@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "cloudcatch/tabs",
-	"version": "1.0.0",
+	"version": "0.0.0-development",
 	"title": "Tabs",
 	"category": "design",
 	"icon": "smiley",

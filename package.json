@@ -15,9 +15,13 @@
 		"start": "wp-scripts start"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^22.4.0",
+		"@semantic-release/changelog": "^5.0.1",
+		"@semantic-release/git": "^9.0.0",
+		"@semantic-release/release-notes-generator": "^9.0.3",
+		"@wordpress/scripts": "^22.5.0",
 		"classnames": "^2.3.1",
 		"lodash": "^4.17.21",
-		"nanoid": "^3.3.2"
+		"nanoid": "^3.3.3",
+		"semantic-release-plugin-update-version-in-files": "^1.1.0"
 	}
 }

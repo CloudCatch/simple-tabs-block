@@ -4,7 +4,7 @@
  * Description:       Block to create a tabbed layout.
  * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           1.0.0
+ * Version:           0.0.0-development
  * Author:            CloudCatch
  * Author URI:        https://cloudcatch.io
  * Contributors:      cloudcatch, dkjensen

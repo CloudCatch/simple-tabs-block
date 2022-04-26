@@ -11,19 +11,22 @@
 /resources
 /tests
 /bin
-/build
+/src
+/dist
 /phpunit.xml
 
 # Files
 .babelrc
 .commitlintrc.js
 .distignore
+.editorconfig
 .env
 .eslintignore
 .eslintrc
 .eslintrc.json
 .gitignore
 .releaserc.js
+.stylelintignore
 .travis.yml
 CHANGELOG.md
 CODE_OF_CONDUCT.md
@@ -39,6 +42,7 @@ package-lock.json
 package.json
 phpcs.xml
 phpunit.xml
+simple-tabs-block.zip
 webpack.config.js
 webpack.gutenberg.config.js
 webpack.mix.js
