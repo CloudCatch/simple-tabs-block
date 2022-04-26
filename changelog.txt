@@ -1,0 +1,13 @@
+# 1.0.0 (2022-04-26)
+
+
+### Bug Fixes
+
+* deploy script ([3e3fa05](https://github.com/CloudCatch/simple-tabs-block/commit/3e3fa05c5aa0f9ee4beee55ce6522a7f76790a5b))
+
+
+### Features
+
+* add readme ([41e1611](https://github.com/CloudCatch/simple-tabs-block/commit/41e1611a064f26a0df9ef0b9755196924f6b4a87))
+* deploy ([0aeb451](https://github.com/CloudCatch/simple-tabs-block/commit/0aeb45173bb61183a4f2a6d8323b8e7cd28be041))
+* first commit ([acbd715](https://github.com/CloudCatch/simple-tabs-block/commit/acbd715dccf7781b34eb545dec1c806418b5b79c))
