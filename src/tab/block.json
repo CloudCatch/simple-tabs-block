@@ -6,7 +6,6 @@
 	"title": "Tab",
 	"category": "design",
 	"parent": ["cloudcatch/tabs"],
-	"icon": "smiley",
 	"keywords": [
 		"tab",
 		"tabs"
