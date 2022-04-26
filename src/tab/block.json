@@ -1,0 +1,34 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "cloudcatch/tab",
+	"version": "1.0.0",
+	"title": "Tab",
+	"category": "design",
+	"parent": ["cloudcatch/tabs"],
+	"icon": "smiley",
+	"keywords": [
+		"tab",
+		"tabs"
+	],
+	"attributes": {
+		"index": {
+			"type": "number"
+		},
+		"label": {
+			"type": "string",
+			"default": "Title"
+		}
+	},
+	"usesContext": [
+		"cloudcatch/tabs/activeTab"
+	],
+	"description": "Tab",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "simple-tabs-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
