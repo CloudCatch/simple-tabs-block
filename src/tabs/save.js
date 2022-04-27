@@ -33,15 +33,24 @@ export default function save( { attributes } ) {
 				<div className="wp-block-cloudcatch-tabs__tabs" role="tablist" aria-orientation={ orientation }>
 					{
 						tabs.map((innerBlock, key) => 
-							<RichText.Content
-								value={innerBlock.label ?? __('Title')}
-								tagName="label"
-								tabIndex="0"
-								role="tab"
-								key={ key } 
-								tabid={ key }
-								className={ classnames( 'wp-block-cloudcatch-tab__label', { 'active': key === defaultTab } ) }
-							/>
+							<div key={key}>
+								<RichText.Content
+									value={innerBlock.attributes.label ?? __('Title')}
+									tagName="label"
+									tabIndex="0"
+									role="tab"
+									key={ key } 
+									tabid={ key }
+									className={ classnames( 'wp-block-cloudcatch-tab__label', innerBlock?.attributes?.className, { 'active': key === defaultTab } ) }
+								/>
+								{ innerBlock?.attributes?.showDescription && (
+									<RichText.Content
+										value={innerBlock.attributes.description ?? __('Description')}
+										tagName="div"
+										className="wp-block-cloudcatch-tab__description"
+									/>
+								) }
+							</div>
 						)
 					}
 				</div>

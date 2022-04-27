@@ -80,27 +80,42 @@ function Edit({ attributes, setAttributes, className, innerBlocks, clientId, upd
 					<div className="wp-block-cloudcatch-tabs__tabs" role="tablist" aria-orientation={ orientation }>
 						{
 							tabs.map((innerBlock, key) => {
+								console.log( innerBlock?.attributes?.className );
 
 								return (
-									<RichText
-										aria-label={__('Title')}
-										placeholder={__('Add text…')}
-										value={innerBlock.label ?? __('Title')}
-										onChange={(value) => {
-											updateBlockAttributes( innerBlock.clientId, {
-												label: value,
-											} );
-										}}
-										key={ key }
-										role="tab"
-										// aria-controls={ uuid + '-tab' }
-										tabid={ key }
-										tabIndex="0"
-										withoutInteractiveFormatting
-										identifier="label"
-										className={ classnames( 'wp-block-cloudcatch-tab__label', { 'active': activeTab === innerBlock.clientId } ) }
-										unstableOnFocus={ (e) => changeTab( innerBlock.clientId ) }
-									/>
+									<div key={key}>
+										<RichText
+											aria-label={__('Title')}
+											placeholder={__('Add text…')}
+											value={innerBlock.attributes.label ?? __('Title')}
+											onChange={(value) => {
+												updateBlockAttributes( innerBlock.clientId, {
+													label: value,
+												} );
+											}}
+											role="tab"
+											tabid={ key }
+											tabIndex="0"
+											withoutInteractiveFormatting
+											identifier="label"
+											className={ classnames( 'wp-block-cloudcatch-tab__label', innerBlock?.attributes?.className, { 'active': activeTab === innerBlock.clientId } ) }
+											unstableOnFocus={ (e) => changeTab( innerBlock.clientId ) }
+										/>
+										{ innerBlock?.attributes?.showDescription && (
+											<RichText
+												aria-label={__('Description')}
+												placeholder={__('Add text…')}
+												value={innerBlock.attributes.description}
+												onChange={(value) => {
+													updateBlockAttributes( innerBlock.clientId, {
+														description: value,
+													} );
+												}}
+												identifier="div"
+												className="wp-block-cloudcatch-tab__description"
+											/>
+										) }
+									</div>
 								);
 							})
 						}
@@ -148,7 +163,7 @@ export default compose(
 						index: n,
 					} );
 
-					tabs.push( { "clientId": block.innerBlocks[ n ].clientId, "label": block.innerBlocks[ n ].attributes.label } );
+					tabs.push( { "clientId": block.innerBlocks[ n ].clientId, "attributes": block.innerBlocks[ n ].attributes } );
 				} );
 
 				updateBlockAttributes( clientId, {

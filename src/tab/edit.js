@@ -4,25 +4,30 @@
 import classnames from 'classnames';
 
 import { __ } from '@wordpress/i18n';
-import { PanelBody, TextControl } from '@wordpress/components';
+import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 import { useInnerBlocksProps, useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import './editor.scss';
 
 export default function Edit({ attributes, setAttributes, className, clientId, context }) {
 	const {
 		index,
-		label
+		label,
+		showDescription,
 	} = attributes;
 
 	const blockProps = useBlockProps( {
-		tabId: index,
+		tabid: index,
 		style: {
 			'display': clientId === context['cloudcatch/tabs/activeTab'] ? 'block' : 'none'
 		}
 	} );
 
-	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-
+	const innerBlocksProps = useInnerBlocksProps( {
+		tabid: index,
+		className: 'wp-block-cloudcatch-tab',
+		style: {
+			'display': clientId === context['cloudcatch/tabs/activeTab'] ? 'block' : 'none'
+		}
 	} );
 
 	return (
@@ -34,11 +39,14 @@ export default function Edit({ attributes, setAttributes, className, clientId, c
 						value={ label }
 						onChange={ ( value ) => setAttributes( { label: value } ) }
 					/>
+					<ToggleControl
+						label={ __( 'Show description' ) }
+						checked={ showDescription }
+						onChange={ () => setAttributes( { showDescription: ! showDescription } ) }
+					/>
 				</PanelBody>
 			</InspectorControls>
-			<div {...blockProps}>
-				<div { ...innerBlocksProps } />
-			</div>
+			<div { ...innerBlocksProps } />
 		</>
 	);
 }

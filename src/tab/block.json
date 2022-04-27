@@ -17,6 +17,14 @@
 		"label": {
 			"type": "string",
 			"default": "Title"
+		},
+		"showDescription": {
+			"type": "boolean",
+			"default": false
+		},
+		"description": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"usesContext": [

@@ -40,6 +40,17 @@
                     setActiveTab(tabLabel.getAttribute('tabid'));
                 });
 
+                tabLabel.addEventListener('keydown', (e) => {
+                    var key = e.keyCode;
+
+                    switch (key) {
+                        case keys.up:
+                        case keys.down:
+                            determineOrientation(e);
+                            break;
+                    }
+                });
+
                 tabLabel.addEventListener('keyup', (e) => {
                     var key = e.keyCode;
 
@@ -58,7 +69,7 @@
                 tab.style.display = 'none';
             });
 
-            tabLabelsContainer.querySelectorAll(':scope > *').forEach(label => {
+            tabLabels.forEach(label => {
                 label.classList.remove('active');
                 label.setAttribute( 'aria-selected', 'false' );
             });
@@ -99,6 +110,8 @@
             for (var x = 0; x < tabLabels.length; x++) {
                 tabLabels[x].addEventListener('focus', focusEventHandler);
             }
+
+            console.log( direction[pressed] );
 
             if (direction[pressed]) {
                 var desiredIndex = activeIndex + direction[pressed];
