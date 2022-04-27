@@ -35,7 +35,7 @@ export default function save( { attributes } ) {
 						tabs.map((innerBlock, key) => 
 							<div key={key}>
 								<RichText.Content
-									value={innerBlock.attributes.label ?? __('Title')}
+									value={innerBlock?.attributes?.label ?? __('Title')}
 									tagName="label"
 									tabIndex="0"
 									role="tab"
@@ -45,7 +45,7 @@ export default function save( { attributes } ) {
 								/>
 								{ innerBlock?.attributes?.showDescription && (
 									<RichText.Content
-										value={innerBlock.attributes.description ?? __('Description')}
+										value={innerBlock?.attributes?.description ?? __('Description')}
 										tagName="div"
 										className="wp-block-cloudcatch-tab__description"
 									/>

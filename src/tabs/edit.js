@@ -87,7 +87,7 @@ function Edit({ attributes, setAttributes, className, innerBlocks, clientId, upd
 										<RichText
 											aria-label={__('Title')}
 											placeholder={__('Add text…')}
-											value={innerBlock.attributes.label ?? __('Title')}
+											value={innerBlock?.attributes?.label ?? __('Title')}
 											onChange={(value) => {
 												updateBlockAttributes( innerBlock.clientId, {
 													label: value,
@@ -105,7 +105,7 @@ function Edit({ attributes, setAttributes, className, innerBlocks, clientId, upd
 											<RichText
 												aria-label={__('Description')}
 												placeholder={__('Add text…')}
-												value={innerBlock.attributes.description}
+												value={innerBlock?.attributes?.description}
 												onChange={(value) => {
 													updateBlockAttributes( innerBlock.clientId, {
 														description: value,
