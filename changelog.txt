@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/CloudCatch/simple-tabs-block/compare/1.1.0...1.1.1) (2022-04-27)
+
+
+### Bug Fixes
+
+* label undefined ([48f332e](https://github.com/CloudCatch/simple-tabs-block/commit/48f332eded05596411151dd39adf8cbe2d60fc7f))
+
 # [1.1.0](https://github.com/CloudCatch/simple-tabs-block/compare/1.0.0...1.1.0) (2022-04-27)
 
 
