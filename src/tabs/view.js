@@ -71,16 +71,20 @@
 
             tabLabels.forEach(label => {
                 label.classList.remove('active');
-                label.setAttribute( 'aria-selected', 'false' );
+                label.setAttribute('aria-selected', 'false');
             });
 
             activeIndex = parseInt(id);
 
             const currentTabLabel = tabLabelsContainer.querySelector('[tabid="' + activeIndex + '"]');
             currentTabLabel.classList.add('active');
-            currentTabLabel.setAttribute( 'aria-selected', 'true' );
+            currentTabLabel.setAttribute('aria-selected', 'true');
 
             tabsContainer.querySelector('[tabid="' + activeIndex + '"]').style.display = 'block';
+
+            const event = new Event('tabChanged');
+
+            window.dispatchEvent(event);
         };
 
         const determineOrientation = (event) => {
@@ -110,8 +114,6 @@
             for (var x = 0; x < tabLabels.length; x++) {
                 tabLabels[x].addEventListener('focus', focusEventHandler);
             }
-
-            console.log( direction[pressed] );
 
             if (direction[pressed]) {
                 var desiredIndex = activeIndex + direction[pressed];
