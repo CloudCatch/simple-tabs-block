@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/CloudCatch/simple-tabs-block/compare/1.1.1...1.2.0) (2022-05-11)
+
+
+### Features
+
+* trigger event on window when tab is changed ([13b49ce](https://github.com/CloudCatch/simple-tabs-block/commit/13b49cee19b963828011d2c2b3f5afeee0e73974))
+
 ## [1.1.1](https://github.com/CloudCatch/simple-tabs-block/compare/1.1.0...1.1.1) (2022-04-27)
 
 
