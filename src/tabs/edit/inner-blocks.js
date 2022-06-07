@@ -1,15 +1,15 @@
 /**
  * WordPress dependencies
  */
- import { useEntityBlockEditor } from '@wordpress/core-data';
- import {
-	 useInnerBlocksProps,
-	 InnerBlocks,
-	 __experimentalBlockContentOverlay as BlockContentOverlay,
-	 store as blockEditorStore,
- } from '@wordpress/block-editor';
- import { useSelect } from '@wordpress/data';
- import { useMemo } from '@wordpress/element';
+import { useEntityBlockEditor } from '@wordpress/core-data';
+import {
+	useInnerBlocksProps,
+	InnerBlocks,
+	__experimentalBlockContentOverlay as BlockContentOverlay,
+	store as blockEditorStore,
+} from '@wordpress/block-editor';
+import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 
 const ALLOWED_BLOCKS = [
 	'cloudcatch/tab'
@@ -24,25 +24,10 @@ const LAYOUT = {
 	alignments: [],
 };
 
-export default function TabsInnerBlocks( {
-    clientId,
-	orientation,
-} ) {
-    const {
-		selectedBlockId
-	} = useSelect(
-		( select ) => {
-			const { getSelectedBlockClientId } = select( blockEditorStore );
-			const selectedBlockId = getSelectedBlockClientId();
+export default function TabsInnerBlocks(props) {
+	const { orientation } = props;
 
-			return {
-				selectedBlockId: selectedBlockId
-			};
-		},
-		[ clientId ]
-	);
-
-    const innerBlocksProps = useInnerBlocksProps(
+	const innerBlocksProps = useInnerBlocksProps(
 		{
 			className: 'wp-block-cloudcatch-tabs__container',
 		},
@@ -51,13 +36,13 @@ export default function TabsInnerBlocks( {
 			__experimentalDefaultBlock: DEFAULT_BLOCK,
 			__experimentalDirectInsert: true,
 			orientation,
-			template: [ [ 'cloudcatch/tab' ], [ 'cloudcatch/tab' ], [ 'cloudcatch/tab' ] ],
+			template: [['cloudcatch/tab'], ['cloudcatch/tab'], ['cloudcatch/tab']],
 			templateLock: false,
 			__experimentalLayout: LAYOUT,
 		}
 	);
 
-    return (
-        <div {...innerBlocksProps}/>
-    );
+	return (
+		<div {...innerBlocksProps} />
+	);
 }
