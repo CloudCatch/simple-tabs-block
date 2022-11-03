@@ -1,5 +1,4 @@
-(() => {
-
+document.addEventListener( 'DOMContentLoaded', function() {
     const cloudCatchTabs = (tabsWrapper) => {
         const tabsContainer = tabsWrapper.querySelector('.wp-block-cloudcatch-tabs__container');
         const tabLabelsContainer = tabsWrapper.querySelector('.wp-block-cloudcatch-tabs__tabs');
@@ -152,6 +151,4 @@
     tabsWrappers.forEach(tabsWrapper => {
         cloudCatchTabs(tabsWrapper);
     });
-
-})();
-
+} );
