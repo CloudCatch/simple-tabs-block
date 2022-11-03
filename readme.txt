@@ -1,8 +1,8 @@
 === Simple Tabs Block ===
 Contributors: cloudcatch, dkjensen
-Tags: tabs, block
+Tags: tabs, tab, block
 Requires at least: 5.9
-Tested up to: 6.0
+Tested up to: 6.1
 Requires PHP: 7.0
 Stable tag: 0.0.0-development
 License: GPL-2.0-or-later

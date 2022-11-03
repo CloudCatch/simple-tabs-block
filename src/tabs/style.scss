@@ -6,7 +6,7 @@
 .wp-block-cloudcatch-tabs.wp-block-cloudcatch-tabs__wrapper {
 	display: flex;
 	flex-direction: column;
-	row-gap: var(--cloudcatch-tabs-row-gap);
+	row-gap: 0;
 	column-gap: var(--cloudcatch-tabs-column-gap);
 	justify-content: normal;
 	align-items: normal;
