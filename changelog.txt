@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/CloudCatch/simple-tabs-block/compare/1.2.1...1.3.0) (2022-11-03)
+
+
+### Bug Fixes
+
+* compatibility with 6.1 ([c92d2b9](https://github.com/CloudCatch/simple-tabs-block/commit/c92d2b90daf6fb113c7a35107169d8d293d96d71))
+
+
+### Features
+
+* update block styles ([fa7deaa](https://github.com/CloudCatch/simple-tabs-block/commit/fa7deaae7c97d55cd4ec47a9ba10951cab00ed13))
+
 ## [1.2.1](https://github.com/CloudCatch/simple-tabs-block/compare/1.2.0...1.2.1) (2022-06-07)
 
 
