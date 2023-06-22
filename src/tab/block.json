@@ -5,7 +5,7 @@
 	"version": "0.0.0-development",
 	"title": "Tab",
 	"category": "design",
-	"parent": ["cloudcatch/tabs"],
+	"parent": ["cloudcatch/tabs-wrapper"],
 	"keywords": [
 		"tab",
 		"tabs"
@@ -32,7 +32,46 @@
 	],
 	"description": "Tab",
 	"supports": {
-		"html": false
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"style": true,
+				"width": true
+			}
+		},
+		"spacing": {
+			"margin": false,
+			"padding": true,
+			"blockGap": false,
+			"__experimentalDefaultControls": {
+				"padding": true
+			}
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		}
 	},
 	"textdomain": "simple-tabs-block",
 	"editorScript": "file:./index.js",
