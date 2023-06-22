@@ -1,15 +1,17 @@
 /**
  * WordPress dependencies
  */
-import { useInnerBlocksProps } from '@wordpress/block-editor';
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
 	const { index } = attributes;
 
-	const innerBlocksProps = useInnerBlocksProps.save( {
+	const blockProps = useBlockProps.save({
 		tabid: index,
 		className: 'wp-block-cloudcatch-tab'
-	} );
+	});
+
+	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 
 	return (
 		<div { ...innerBlocksProps } />

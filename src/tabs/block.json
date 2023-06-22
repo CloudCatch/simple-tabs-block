@@ -24,7 +24,8 @@
 		}
 	},
 	"providesContext": {
-		"cloudcatch/tabs/activeTab": "activeTab"
+		"cloudcatch/tabs/activeTab": "activeTab",
+		"cloudcatch/tabs/orientation": "orientation"
 	},
 	"description": "Tabbed layout",
 	"supports": {

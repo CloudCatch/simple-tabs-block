@@ -22,6 +22,15 @@ import { compose } from '@wordpress/compose';
 import './editor.scss';
 import TabsInnerBlocks from './edit/inner-blocks';
 
+const DEFAULT_BLOCK = {
+	name: 'cloudcatch/tab'
+};
+
+const LAYOUT = {
+	type: 'default',
+	alignments: [],
+};
+
 function Edit({ attributes, setAttributes, className, innerBlocks, clientId, updateActiveTab, selectBlock, resetTabOrder }) {
 	const nanoid = customAlphabet('1234567890abcdef', 10);
 
@@ -57,6 +66,19 @@ function Edit({ attributes, setAttributes, className, innerBlocks, clientId, upd
 		})
 	});
 
+	const innerBlocksProps = useInnerBlocksProps({
+		className: 'wp-block-cloudcatch-tabs__tabs',
+		role: 'tablist',
+		'aria-orientation': orientation,
+	}, {
+		__experimentalDefaultBlock: DEFAULT_BLOCK,
+		__experimentalDirectInsert: true,
+		orientation,
+		template: [['cloudcatch/tabs-wrapper'], ['cloudcatch/tabs-content-wrapper']],
+		templateLock: false,
+		__experimentalLayout: LAYOUT,
+	});
+
 	const changeTab = (tab) => {
 		updateActiveTab(tab);
 	};
@@ -77,9 +99,12 @@ function Edit({ attributes, setAttributes, className, innerBlocks, clientId, upd
 			</InspectorControls>
 			<div {...blockProps}>
 				<div className="wp-block-cloudcatch-tabs__tabs-wrapper">
-					<div className="wp-block-cloudcatch-tabs__tabs" role="tablist" aria-orientation={orientation}>
+					<div {...innerBlocksProps} />
+					{/* <div className="wp-block-cloudcatch-tabs__tabs" role="tablist" aria-orientation={orientation}>
 						{
 							tabs.map((innerBlock, key) => {
+								console.log( innerBlock );
+
 								return (
 									<div key={key}>
 										<label
@@ -110,9 +135,12 @@ function Edit({ attributes, setAttributes, className, innerBlocks, clientId, upd
 							})
 						}
 						<InnerBlocks.ButtonBlockAppender />
-					</div>
+					</div> */}
 				</div>
-				<TabsInnerBlocks orientation={orientation} />
+				<div className="wp-block-cloudcatch-tabs__container">
+
+				</div>
+				{/* <TabsInnerBlocks orientation={orientation} /> */}
 			</div>
 		</>
 
@@ -161,6 +189,8 @@ export default compose(
 				});
 			},
 			updateActiveTab(activeTab) {
+				console.log( activeTab );
+
 				updateBlockAttributes(block.clientId, {
 					activeTab: activeTab,
 				});

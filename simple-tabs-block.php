@@ -25,5 +25,8 @@
 function create_block_wp_tabs_block_block_init() {
 	register_block_type( __DIR__ . '/build/tabs' );
 	register_block_type( __DIR__ . '/build/tab' );
+	register_block_type( __DIR__ . '/build/tab-content' );
+	register_block_type( __DIR__ . '/build/tabs-wrapper' );
+	register_block_type( __DIR__ . '/build/tabs-content-wrapper' );
 }
 add_action( 'init', 'create_block_wp_tabs_block_block_init' );

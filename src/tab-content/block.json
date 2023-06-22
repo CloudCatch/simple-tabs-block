@@ -1,11 +1,11 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "cloudcatch/tab",
+	"name": "cloudcatch/tab-content",
 	"version": "0.0.0-development",
-	"title": "Tab",
+	"title": "Tab Content",
 	"category": "design",
-	"parent": ["cloudcatch/tabs-wrapper"],
+	"parent": ["cloudcatch/tabs-content-wrapper"],
 	"keywords": [
 		"tab",
 		"tabs"
@@ -13,24 +13,12 @@
 	"attributes": {
 		"index": {
 			"type": "number"
-		},
-		"label": {
-			"type": "string",
-			"default": "Title"
-		},
-		"showDescription": {
-			"type": "boolean",
-			"default": false
-		},
-		"description": {
-			"type": "string",
-			"default": ""
 		}
 	},
 	"usesContext": [
 		"cloudcatch/tabs/activeTab"
 	],
-	"description": "Tab",
+	"description": "Tab Content",
 	"supports": {
 		"html": false,
 		"color": {

@@ -14,25 +14,27 @@ export default function Edit({ attributes, setAttributes, className, clientId, c
 		index,
 		label,
 		showDescription,
+		description,
 	} = attributes;
+
+	console.log( attributes );
+
+	// useEffect(() => {
+	// 	console.log( attributes );
+	// } );
+	
 
 	const ref = useRef(null);
 
 	const blockProps = useBlockProps({
 		tabid: index,
-		className: 'wp-block-cloudcatch-tab',
-		style: {
-			'display': clientId === context['cloudcatch/tabs/activeTab'] ? 'block' : 'none'
-		}
+		className: classnames( 'wp-block-cloudcatch-tab', { 'active': context['cloudcatch/tabs/activeTab'] === clientId } ),
+		// style: {
+		// 	'display': clientId === context['cloudcatch/tabs/activeTab'] ? 'block' : 'none'
+		// }
 	});
 
-	const innerBlocksProps = useInnerBlocksProps({
-		tabid: index,
-		className: 'wp-block-cloudcatch-tab',
-		style: {
-			'display': clientId === context['cloudcatch/tabs/activeTab'] ? 'block' : 'none'
-		}
-	});
+	const innerBlocksProps = useInnerBlocksProps(blockProps);
 
 	return (
 		<>
@@ -50,8 +52,33 @@ export default function Edit({ attributes, setAttributes, className, clientId, c
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div {...blockProps} />
-			<div {...innerBlocksProps} />
+			
+			<div {...blockProps}>
+				<label
+					className='wp-block-cloudcatch-tab__label'
+					role="tab"
+					// tabid={key}
+					tabIndex="0"
+					// onFocus={(e) => changeTab(clientId)}
+				>
+					{label ?? __('Title')}
+				</label>
+
+				{showDescription && (
+					<RichText
+						aria-label={__('Description')}
+						placeholder={__('Add text…')}
+						value={description}
+						onChange={(value) => {
+							setAttributes({
+								description: value,
+							});
+						}}
+						identifier="div"
+						className="wp-block-cloudcatch-tab__description"
+					/>
+				)}
+			</div>					
 		</>
 	);
 }
