@@ -6,6 +6,7 @@
 	"title": "Tabs",
 	"category": "design",
 	"keywords": ["tab", "tabs"],
+	"description": "Create rich tabbed layouts to organize information in a simple way.",
 	"attributes": {
 		"uuid": {
 			"type": "string"
@@ -24,9 +25,9 @@
 		}
 	},
 	"providesContext": {
-		"cloudcatch/tabs/activeTab": "activeTab"
+		"cloudcatch/tabs/activeTab": "activeTab",
+		"cloudcatch/tabs/defaultTab": "defaultTab"
 	},
-	"description": "Tabbed layout",
 	"supports": {
 		"align": ["wide", "full"],
 		"anchor": true,

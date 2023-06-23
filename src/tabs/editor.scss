@@ -1,12 +1,12 @@
-.editor-styles-wrapper {
-	@import "style";
+.wp-block-cloudcatch-tabs__container {
 
-	.wp-block-cloudcatch-tabs {
+	> .block-list-appender {
+		order: 0;
+		position: static;
+		margin: 0 !important;
 
-		.wp-block-cloudcatch-tabs__tabs {
-			.block-editor-button-block-appender {
-				width: 36px;
-			}
+		.block-editor-button-block-appender {
+			width: auto;
 		}
 	}
 }

@@ -1,154 +1,161 @@
-document.addEventListener( 'DOMContentLoaded', function() {
-    const cloudCatchTabs = (tabsWrapper) => {
-        const tabsContainer = tabsWrapper.querySelector('.wp-block-cloudcatch-tabs__container');
-        const tabLabelsContainer = tabsWrapper.querySelector('.wp-block-cloudcatch-tabs__tabs');
-        const tabLabels = tabLabelsContainer.querySelectorAll('[role="tab"]');
+document.addEventListener( 'DOMContentLoaded', function () {
+	const cloudCatchTabs = ( tabsWrapper ) => {
+		const tabLabels = tabsWrapper.querySelectorAll( '[role="tab"]' );
 
-        const keys = {
-            end: 35,
-            home: 36,
-            left: 37,
-            up: 38,
-            right: 39,
-            down: 40,
-        };
+		for ( let x = 0; x < tabLabels.length; x++ ) {
+			tabLabels[ x ].addEventListener( 'focus', focusEventHandler );
+		}
 
-        // Add or subtract depending on key pressed
-        const direction = {
-            37: -1,
-            38: -1,
-            39: 1,
-            40: 1,
-        };
+		const keys = {
+			end: 35,
+			home: 36,
+			left: 37,
+			up: 38,
+			right: 39,
+			down: 40,
+		};
 
-        let activeIndex = 0;
+		// Add or subtract depending on key pressed
+		const direction = {
+			37: -1,
+			38: -1,
+			39: 1,
+			40: 1,
+		};
 
-        const init = () => {
-            tabLabels.forEach(tabLabel => {
-                if (tabLabel.classList.contains('active')) {
-                    activeIndex = tabLabel.getAttribute('tabid');
-                }
-            });
+		let activeIndex = 0;
 
-            setActiveTab(activeIndex);
-        };
+		const init = () => {
+			activeIndex = tabsWrapper.getAttribute( 'data-default-tab' ) || 0;
 
-        const initEvents = () => {
-            tabLabels.forEach(tabLabel => {
-                tabLabel.addEventListener('click', (e) => {
-                    setActiveTab(tabLabel.getAttribute('tabid'));
-                });
+			setActiveTab( activeIndex );
+		};
 
-                tabLabel.addEventListener('keydown', (e) => {
-                    var key = e.keyCode;
+		const initEvents = () => {
+			tabLabels.forEach( ( tabLabel ) => {
+				tabLabel.addEventListener( 'click', ( e ) => {
+					setActiveTab( tabLabel.getAttribute( 'tabid' ) );
+				} );
 
-                    switch (key) {
-                        case keys.up:
-                        case keys.down:
-                            determineOrientation(e);
-                            break;
-                    }
-                });
+				tabLabel.addEventListener( 'keydown', ( e ) => {
+					const key = e.keyCode;
 
-                tabLabel.addEventListener('keyup', (e) => {
-                    var key = e.keyCode;
+					switch ( key ) {
+						case keys.up:
+						case keys.down:
+							determineOrientation( e );
+							break;
+					}
+				} );
 
-                    switch (key) {
-                        case keys.left:
-                        case keys.right:
-                            determineOrientation(e);
-                            break;
-                    }
-                });
-            });
-        };
+				tabLabel.addEventListener( 'keyup', ( e ) => {
+					const key = e.keyCode;
 
-        const setActiveTab = (id) => {
-            tabsContainer.querySelectorAll(':scope > *').forEach(tab => {
-                tab.style.display = 'none';
-            });
+					switch ( key ) {
+						case keys.left:
+						case keys.right:
+							determineOrientation( e );
+							break;
+					}
+				} );
+			} );
+		};
 
-            tabLabels.forEach(label => {
-                label.classList.remove('active');
-                label.setAttribute('aria-selected', 'false');
-            });
+		const setActiveTab = ( id ) => {
+			tabsWrapper
+				.querySelectorAll( 'div[tabid]:not([role="tab"])' )
+				.forEach( ( tab ) => {
+					tab.style.display = 'none';
+					tab.classList.remove( 'active' );
+				} );
 
-            activeIndex = parseInt(id);
+			tabLabels.forEach( ( label ) => {
+				label.classList.remove( 'active' );
+				label.setAttribute( 'aria-selected', 'false' );
+			} );
 
-            const currentTabLabel = tabLabelsContainer.querySelector('[tabid="' + activeIndex + '"]');
-            currentTabLabel.classList.add('active');
-            currentTabLabel.setAttribute('aria-selected', 'true');
+			activeIndex = parseInt( id );
 
-            tabsContainer.querySelector('[tabid="' + activeIndex + '"]').style.display = 'block';
+			const currentTabLabel = tabsWrapper.querySelector(
+				'[role="tab"][tabid="' + activeIndex + '"]'
+			);
 
-            const event = new Event('tabChanged');
+			currentTabLabel.classList.add( 'active' );
+			currentTabLabel.setAttribute( 'aria-selected', 'true' );
 
-            window.dispatchEvent(event);
-        };
+			tabsWrapper.querySelector(
+				'div[tabid="' + activeIndex + '"]:not([role="tab"])'
+			).style.display = 'block';
+			tabsWrapper
+				.querySelector(
+					'div[tabid="' + activeIndex + '"]:not([role="tab"])'
+				)
+				.classList.add( 'active' );
 
-        const determineOrientation = (event) => {
-            var key = event.keyCode;
-            var vertical = tabLabelsContainer.getAttribute('aria-orientation') == 'vertical';
-            var proceed = false;
+			const event = new Event( 'tabChanged' );
 
-            if (vertical) {
-                if (key === keys.up || key === keys.down) {
-                    event.preventDefault();
-                    proceed = true;
-                }
-            } else {
-                if (key === keys.left || key === keys.right) {
-                    proceed = true;
-                }
-            }
+			window.dispatchEvent( event );
+		};
 
-            if (proceed) {
-                switchTabOnArrowPress(event);
-            }
-        };
+		const determineOrientation = ( event ) => {
+			const key = event.keyCode;
+			const vertical = tabsWrapper.classList.contains( 'is-vertical' );
+			let proceed = false;
 
-        function switchTabOnArrowPress(event) {
-            var pressed = event.keyCode;
+			if ( vertical ) {
+				if ( key === keys.up || key === keys.down ) {
+					event.preventDefault();
+					proceed = true;
+				}
+			} else if ( key === keys.left || key === keys.right ) {
+				proceed = true;
+			}
 
-            for (var x = 0; x < tabLabels.length; x++) {
-                tabLabels[x].addEventListener('focus', focusEventHandler);
-            }
+			if ( proceed ) {
+				switchTabOnArrowPress( event );
+			}
+		};
 
-            if (direction[pressed]) {
-                var desiredIndex = activeIndex + direction[pressed];
+		function switchTabOnArrowPress( event ) {
+			const pressed = event.keyCode;
 
-                if (typeof tabLabels[desiredIndex] !== 'undefined') {
-                    tabLabels[desiredIndex].focus();
-                } else if (pressed === keys.left || pressed === keys.up) {
-                    tabLabels[tabLabels.length - 1].focus();
-                } else if (pressed === keys.right || pressed == keys.down) {
-                    tabLabels[0].focus();
-                }
-            }
-        }
+			if ( direction[ pressed ] ) {
+				const desiredIndex = activeIndex + direction[ pressed ];
 
-        function focusEventHandler(event) {
-            var target = event.target;
+				if ( typeof tabLabels[ desiredIndex ] !== 'undefined' ) {
+					tabLabels[ desiredIndex ].focus();
+				} else if ( pressed === keys.left || pressed === keys.up ) {
+					tabLabels[ tabLabels.length - 1 ].focus();
+				} else if ( pressed === keys.right || pressed == keys.down ) {
+					tabLabels[ 0 ].focus();
+				}
+			}
+		}
 
-            setTimeout(checkTabFocus, 0, target);
-        }
+		function focusEventHandler( event ) {
+			const target = event.target;
 
-        // Only activate tab on focus if it still has focus after the delay
-        function checkTabFocus(target) {
-            var focused = document.activeElement;
+			setTimeout( checkTabFocus, 0, target );
+		}
 
-            if (target === focused) {
-                setActiveTab(target.getAttribute('tabid'));
-            }
-        }
+		// Only activate tab on focus if it still has focus after the delay
+		function checkTabFocus( target ) {
+			const focused = document.activeElement;
 
-        init();
-        initEvents();
-    };
+			if ( target === focused ) {
+				setActiveTab( target.getAttribute( 'tabid' ) );
+			}
+		}
 
-    const tabsWrappers = document.querySelectorAll('.wp-block-cloudcatch-tabs');
+		init();
+		initEvents();
+	};
 
-    tabsWrappers.forEach(tabsWrapper => {
-        cloudCatchTabs(tabsWrapper);
-    });
+	const tabsWrappers = document.querySelectorAll(
+		'.wp-block-cloudcatch-tabs'
+	);
+
+	tabsWrappers.forEach( ( tabsWrapper ) => {
+		cloudCatchTabs( tabsWrapper );
+	} );
 } );

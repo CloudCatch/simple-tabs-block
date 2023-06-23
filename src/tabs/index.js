@@ -1,3 +1,4 @@
+import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import './style.scss';
 
@@ -5,10 +6,78 @@ import './style.scss';
  * Internal dependencies
  */
 import Edit from './edit';
+import { TabsIcon as icon } from './icon';
 import save from './save';
+import deprecated from './deprecated';
 
 registerBlockType( 'cloudcatch/tabs', {
 	edit: Edit,
-	icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310.9 237.6"><path d="M273.4 64.4h-17.8c1.6-4.1 2.4-8.6 2.4-13.3V37.5C258 16.8 241.2 0 220.5 0h-27.7c-9.6 0-18.4 3.6-25 9.6-6.6-6-15.4-9.6-25-9.6h-27.7c-9.6 0-18.4 3.6-25 9.6-6.6-6-15.4-9.6-25-9.6H37.5C16.8 0 0 16.8 0 37.5v13.6c0 9.8 3.8 18.7 9.9 25.4C3.8 83.2 0 92.1 0 101.9v98.2c0 20.7 16.8 37.5 37.5 37.5h235.9c20.7 0 37.5-16.8 37.5-37.5v-98.2c0-20.7-16.9-37.5-37.5-37.5zM192.8 25h27.7c6.9 0 12.5 5.6 12.5 12.5v13.6c0 6.9-5.6 12.5-12.5 12.5h-27.7c-6.9 0-12.5-5.6-12.5-12.5V37.5c0-6.9 5.7-12.5 12.5-12.5zm-77.6 0h27.7c6.9 0 12.5 5.6 12.5 12.5v13.6c0 6.9-5.6 12.5-12.5 12.5h-27.7c-6.9 0-12.5-5.6-12.5-12.5V37.5c0-6.9 5.6-12.5 12.5-12.5zm170.7 175.1c0 6.9-5.6 12.5-12.5 12.5H37.5c-6.9 0-12.5-5.6-12.5-12.5v-98.2c0-6.9 5.6-12.5 12.5-12.5h235.9c6.9 0 12.5 5.6 12.5 12.5v98.2z"/></svg>,
+	icon,
 	save,
+	deprecated,
+	example: {
+		attributes: {
+			tabs: [ '500', '501', '502' ],
+		},
+		innerBlocks: [
+			{
+				name: 'cloudcatch/tab',
+				attributes: {
+					id: '500',
+					index: 0,
+					label: __( 'Tab 1', 'simple-tabs-block' ),
+				},
+				innerBlocks: [
+					{
+						name: 'core/paragraph',
+						attributes: {
+							/* translators: example text. */
+							content: __(
+								'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et eros eu felis.',
+								'simple-tabs-block'
+							),
+						},
+					},
+				],
+			},
+			{
+				name: 'cloudcatch/tab',
+				attributes: {
+					id: '501',
+					index: 1,
+					label: __( 'Tab 2', 'simple-tabs-block' ),
+				},
+				innerBlocks: [
+					{
+						name: 'core/paragraph',
+						attributes: {
+							/* translators: example text. */
+							content: __(
+								'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et eros eu felis.'
+							),
+						},
+					},
+				],
+			},
+			{
+				name: 'cloudcatch/tab',
+				attributes: {
+					id: '502',
+					index: 2,
+					label: __( 'Tab 3', 'simple-tabs-block' ),
+				},
+				innerBlocks: [
+					{
+						name: 'core/paragraph',
+						attributes: {
+							/* translators: example text. */
+							content: __(
+								'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et eros eu felis.'
+							),
+						},
+					},
+				],
+			},
+		],
+	},
 } );

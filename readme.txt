@@ -2,7 +2,7 @@
 Contributors: cloudcatch, dkjensen
 Tags: tabs, tab, block
 Requires at least: 5.9
-Tested up to: 6.1
+Tested up to: 6.2.2
 Requires PHP: 7.0
 Stable tag: 0.0.0-development
 License: GPL-2.0-or-later
@@ -17,6 +17,12 @@ Simple to use block to create tabs within the block editor. Each tab supports th
 This plugin introduces minimal styling and therefore likely will require custom styling in order to achieve the desired look and feel for your tabs.
 
 Supports horizontal and vertical tabs.
+
+== Features ==
+* Tabs customizable using the native block editor style controls
+* Fully accessible including keyboard controls
+* Supports horizontal and vertical tabs
+* Set default open tab
 
 == Installation ==
 

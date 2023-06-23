@@ -11,12 +11,10 @@ import {
 import { useSelect } from '@wordpress/data';
 import { useMemo } from '@wordpress/element';
 
-const ALLOWED_BLOCKS = [
-	'cloudcatch/tab'
-];
+const ALLOWED_BLOCKS = [ 'cloudcatch/tab' ];
 
 const DEFAULT_BLOCK = {
-	name: 'cloudcatch/tab'
+	name: 'cloudcatch/tab',
 };
 
 const LAYOUT = {
@@ -24,8 +22,22 @@ const LAYOUT = {
 	alignments: [],
 };
 
-export default function TabsInnerBlocks(props) {
-	const { orientation } = props;
+export default function TabsInnerBlocks( props ) {
+	const { orientation, clientId } = props;
+
+	// grid-template-columns: repeat(4, 1fr);
+
+	const { innerBlockCount, selectedBlockClientId } = useSelect(
+		( _select ) => {
+			return {
+				innerBlockCount:
+					_select( blockEditorStore ).getBlock( clientId )
+						?.innerBlocks?.length,
+				selectedBlockClientId: getSelectedBlockClientId(),
+			};
+		},
+		[ clientId ]
+	);
 
 	const innerBlocksProps = useInnerBlocksProps(
 		{
@@ -35,14 +47,14 @@ export default function TabsInnerBlocks(props) {
 			allowedBlocks: ALLOWED_BLOCKS,
 			__experimentalDefaultBlock: DEFAULT_BLOCK,
 			__experimentalDirectInsert: true,
-			orientation,
-			template: [['cloudcatch/tab'], ['cloudcatch/tab'], ['cloudcatch/tab']],
+			template: [
+				[ 'cloudcatch/tab' ],
+				[ 'cloudcatch/tab' ],
+				[ 'cloudcatch/tab' ],
+			],
 			templateLock: false,
-			__experimentalLayout: LAYOUT,
 		}
 	);
 
-	return (
-		<div {...innerBlocksProps} />
-	);
+	return <div { ...innerBlocksProps } />;
 }

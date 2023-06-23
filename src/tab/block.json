@@ -5,12 +5,13 @@
 	"version": "0.0.0-development",
 	"title": "Tab",
 	"category": "design",
-	"parent": ["cloudcatch/tabs-wrapper"],
-	"keywords": [
-		"tab",
-		"tabs"
-	],
+	"parent": ["cloudcatch/tabs"],
+	"keywords": ["tab", "tabs"],
+	"description": "Customize your tabs look and feel using the Styles panel. Use any block within the tab content below.",
 	"attributes": {
+		"id": {
+			"type": "string"
+		},
 		"index": {
 			"type": "number"
 		},
@@ -28,9 +29,9 @@
 		}
 	},
 	"usesContext": [
-		"cloudcatch/tabs/activeTab"
+		"cloudcatch/tabs/activeTab",
+		"cloudcatch/tabs/defaultTab"
 	],
-	"description": "Tab",
 	"supports": {
 		"html": false,
 		"color": {
