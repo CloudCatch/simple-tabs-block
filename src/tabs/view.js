@@ -33,7 +33,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
 		const initEvents = () => {
 			tabLabels.forEach( ( tabLabel ) => {
-				tabLabel.addEventListener( 'click', ( e ) => {
+				tabLabel.addEventListener( 'click', () => {
 					setActiveTab( tabLabel.getAttribute( 'tabid' ) );
 				} );
 
@@ -92,7 +92,9 @@ document.addEventListener( 'DOMContentLoaded', function () {
 				)
 				.classList.add( 'active' );
 
-			const event = new Event( 'tabChanged' );
+			const event = new CustomEvent( 'tabChanged', { // eslint-disable-line
+				detail: currentTabLabel,
+			} );
 
 			window.dispatchEvent( event );
 		};
@@ -140,7 +142,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
 		// Only activate tab on focus if it still has focus after the delay
 		function checkTabFocus( target ) {
-			const focused = document.activeElement;
+			const focused = document.activeElement; // eslint-disable-line
 
 			if ( target === focused ) {
 				setActiveTab( target.getAttribute( 'tabid' ) );

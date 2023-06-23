@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Simple Tabs Block
- * Description:       Block to create a tabbed layout.
+ * Description:       Create rich tabbed layouts to organize information in a simple way using Simple Tabs Block
  * Requires at least: 5.9
  * Requires PHP:      7.0
  * Version:           0.0.0-development

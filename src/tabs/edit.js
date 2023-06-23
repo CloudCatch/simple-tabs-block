@@ -3,7 +3,6 @@
  */
 import classnames from 'classnames';
 import times from 'lodash/times';
-import { nanoid, customAlphabet } from 'nanoid';
 
 import { __ } from '@wordpress/i18n';
 import {
@@ -13,7 +12,7 @@ import {
 	InnerBlocks,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
-import { useRef, useEffect } from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 import { PanelBody, SelectControl } from '@wordpress/components';
 import { withSelect, useSelect, withDispatch, select } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
@@ -36,7 +35,6 @@ function Edit( {
 	const {
 		defaultTab,
 		activeTab,
-		tabs,
 		layout: {
 			justifyContent,
 			orientation = 'horizontal',
@@ -193,14 +191,10 @@ export default compose(
 			innerBlocks: _select( 'core/block-editor' ).getBlocks( clientId ),
 		};
 	} ),
-	withDispatch( ( dispatch, { clientId }, { select } ) => {
-		const { getBlock } = select( 'core/block-editor' );
-
-		const { updateBlockAttributes, moveBlockToPosition } =
-			dispatch( 'core/block-editor' );
-
+	withDispatch( ( dispatch, { clientId }, { select: _select } ) => {
+		const { getBlock } = _select( 'core/block-editor' );
+		const { updateBlockAttributes } = dispatch( 'core/block-editor' );
 		const block = getBlock( clientId );
-
 		const { selectBlock } = dispatch( blockEditorStore );
 
 		return {
@@ -226,20 +220,6 @@ export default compose(
 				updateBlockAttributes( block.clientId, {
 					activeTab,
 				} );
-				// times( block.innerBlocks.length, ( n ) => {
-				// 	updateBlockAttributes( block.innerBlocks[ n ].clientId, {
-				// 		activeTab,
-				// 	} );
-				// } );
-				// selectBlock( activeTab );
-			},
-			moveTab( tabId, newIndex ) {
-				moveBlockToPosition(
-					tabId,
-					clientId,
-					clientId,
-					parseInt( newIndex )
-				);
 			},
 		};
 	} )

@@ -36,7 +36,7 @@
 		"html": false,
 		"color": {
 			"gradients": true,
-			"link": true,
+			"link": false,
 			"__experimentalDefaultControls": {
 				"background": true,
 				"text": true

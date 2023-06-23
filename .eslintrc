@@ -4,6 +4,7 @@
 		"@wordpress/no-unsafe-wp-apis": 0,
 		"no-console": "off",
 		"eqeqeq": "off",
-		"jsx-a11y/label-has-associated-control": "off"
+		"jsx-a11y/label-has-associated-control": "off",
+		"react-hooks/exhaustive-deps": "off"
 	}
 }
