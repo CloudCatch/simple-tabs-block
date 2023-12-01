@@ -26,6 +26,9 @@ Supports horizontal and vertical tabs.
 
 == Changelog ==
 
+= 2.0.1 =
+* WP 6.4 compatibility
+
 = 2.0.0 =
 
 * **BREAKING CHANGE**: Refactor tabs block for updated block controls
