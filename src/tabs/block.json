@@ -32,7 +32,6 @@
 		"align": ["wide", "full"],
 		"anchor": true,
 		"html": false,
-		"inserter": true,
 		"typography": {
 			"fontSize": true,
 			"lineHeight": true,
@@ -51,7 +50,7 @@
 				"blockGap": true
 			}
 		},
-		"__experimentalLayout": {
+		"layout": {
 			"allowSwitching": false,
 			"allowInheriting": false,
 			"default": {
