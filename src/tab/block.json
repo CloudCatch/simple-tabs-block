@@ -72,7 +72,8 @@
 			"__experimentalDefaultControls": {
 				"fontSize": true
 			}
-		}
+		},
+		"shadow": true
 	},
 	"textdomain": "simple-tabs-block",
 	"editorScript": "file:./index.js",
