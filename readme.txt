@@ -2,13 +2,13 @@
 Contributors: cloudcatch, dkjensen
 Tags: tabs, tab, block
 Requires at least: 6.4
-Tested up to: 6.4.1
+Tested up to: 6.5
 Requires PHP: 7.0
 Stable tag: 0.0.0-development
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create accessible tabbed layouts 
+Create accessible tabbed layouts
 
 == Description ==
 
@@ -26,6 +26,11 @@ Supports horizontal and vertical tabs.
 
 == Changelog ==
 
+= 2.1.0 =
+* Fix: Undefined property warning
+* Feat: Add additional block supports
+* WP 6.5 compatibility
+
 = 2.0.1 =
 * WP 6.4 compatibility
 
@@ -40,7 +45,7 @@ Supports horizontal and vertical tabs.
 * Feat: Update block styles
 * Docs: Compatibility with 6.1
 
-= 1.2.1 = 
+= 1.2.1 =
 
 * Fix: Various block fixes
 
