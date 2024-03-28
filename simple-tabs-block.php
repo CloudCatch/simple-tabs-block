@@ -32,7 +32,7 @@ add_action( 'init', 'create_block_wp_tabs_block_block_init' );
  * Prevent auto updating to version 2.0.0 due to breaking changes
  *
  * @param boolean $should_update Whether to update.
- * @param object $plugin The update offer.
+ * @param object  $plugin The update offer.
  * @return boolean
  */
 function create_block_wp_tabs_block_auto_update( $should_update, $plugin ) {
@@ -44,7 +44,7 @@ function create_block_wp_tabs_block_auto_update( $should_update, $plugin ) {
 		return $should_update;
 	}
 
-	if ( version_compare( $plugin->Version, '2.0.0', '<' ) ) {
+	if ( ! isset( $plugin->Version ) || version_compare( $plugin->Version, '2.0.0', '<' ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		return false;
 	}
 
