@@ -26,6 +26,9 @@ Supports horizontal and vertical tabs.
 
 == Changelog ==
 
+= 2.2.0 =
+* WP 6.7 compatibility
+
 = 2.1.0 =
 * Fix: Undefined property warning
 * Feat: Add additional block supports
