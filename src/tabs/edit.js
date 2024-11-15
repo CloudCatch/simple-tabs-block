@@ -66,7 +66,6 @@ function Edit( {
 
 	useEffect( () => {
 		if ( ! activeTab && innerBlockIds.length ) {
-			console.log( innerBlockIds );
 			updateActiveTab( innerBlockIds[ 0 ] );
 		}
 	}, [ innerBlockIds ] );
@@ -115,8 +114,8 @@ function Edit( {
 		{
 			renderAppender: InnerBlocks.ButtonBlockAppender,
 			allowedBlocks: ALLOWED_BLOCKS,
-			__experimentalDefaultBlock: DEFAULT_BLOCK,
-			__experimentalDirectInsert: true,
+			defaultBlock: DEFAULT_BLOCK,
+			directInsert: true,
 			templateLock: false,
 			template: [
 				[
@@ -175,6 +174,7 @@ function Edit( {
 						onChange={ ( value ) =>
 							setAttributes( { defaultTab: parseInt( value ) } )
 						}
+						__nextHasNoMarginBottom={ true }
 					/>
 				</PanelBody>
 			</InspectorControls>

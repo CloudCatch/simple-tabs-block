@@ -61,6 +61,7 @@ export default function Edit( { attributes, setAttributes, context } ) {
 						onChange={ ( value ) =>
 							setAttributes( { label: value } )
 						}
+						__nextHasNoMarginBottom={ true }
 					/>
 					<ToggleControl
 						label={ __( 'Show description' ) }
@@ -70,6 +71,7 @@ export default function Edit( { attributes, setAttributes, context } ) {
 								showDescription: ! showDescription,
 							} )
 						}
+						__nextHasNoMarginBottom={ true }
 					/>
 				</PanelBody>
 			</InspectorControls>
