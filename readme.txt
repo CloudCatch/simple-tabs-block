@@ -26,6 +26,9 @@ Supports horizontal and vertical tabs.
 
 == Changelog ==
 
+= 2.2.1 =
+* Fix: Block gap not applying when modified globally in style book
+
 = 2.2.0 =
 * WP 6.7 compatibility
 

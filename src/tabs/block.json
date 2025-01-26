@@ -75,6 +75,7 @@
 		"layout": {
 			"allowSwitching": false,
 			"allowInheriting": false,
+			"allowEditing": false,
 			"default": {
 				"type": "flex"
 			}
