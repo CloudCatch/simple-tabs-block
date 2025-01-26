@@ -31,7 +31,76 @@ export default [
 		},
 		save( { attributes } ) {
 			const {
-				uuid,
+				tabs,
+				defaultTab,
+				layout: {
+					justifyContent,
+					orientation = 'horizontal',
+					flexWrap = 'wrap',
+				} = {},
+			} = attributes;
+
+			const innerBlockCount = tabs.length;
+
+			const blockProps = useBlockProps.save( {
+				className: classnames(
+					'wp-block-cloudcatch-tabs__wrapper',
+					'wp-block-cloudcatch-tabs-v2'
+				),
+				'data-default-tab': defaultTab || undefined,
+			} );
+
+			const innerBlocksProps = useInnerBlocksProps.save( {
+				className: classnames( 'wp-block-cloudcatch-tabs__container', {
+					'items-justified-right': justifyContent === 'right',
+					'items-justified-space-between':
+						justifyContent === 'space-between',
+					'items-justified-left': justifyContent === 'left',
+					'items-justified-center': justifyContent === 'center',
+					'is-vertical': orientation === 'vertical',
+					'no-wrap': flexWrap === 'nowrap',
+				} ),
+				style: {
+					gridTemplateColumns:
+						orientation !== 'vertical'
+							? `repeat(${ innerBlockCount }, auto) ${
+									justifyContent === 'left' ? '1fr' : 'auto'
+							  }`
+							: undefined,
+					gridTemplateRows:
+						orientation === 'vertical'
+							? `repeat(${ innerBlockCount }, auto) 1fr`
+							: undefined,
+				},
+			} );
+
+			return (
+				<div { ...blockProps }>
+					<div { ...innerBlocksProps } />
+				</div>
+			);
+		},
+	},
+	{
+		attributes: {
+			uuid: {
+				type: 'string',
+			},
+			tabs: {
+				type: 'array',
+				default: [],
+			},
+			defaultTab: {
+				type: 'number',
+				default: 0,
+			},
+			activeTab: {
+				type: 'string',
+				default: '',
+			},
+		},
+		save( { attributes } ) {
+			const {
 				tabs,
 				defaultTab,
 				layout: {

@@ -23,10 +23,10 @@
 		"start": "wp-scripts start"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^30.4.0",
+		"@wordpress/scripts": "^30.9.0",
 		"classnames": "^2.5.1",
 		"lodash": "^4.17.21",
-		"nanoid": "^5.0.8",
+		"nanoid": "^5.0.9",
 		"semantic-release-plugin-update-version-in-files": "^1.1.0"
 	}
 }

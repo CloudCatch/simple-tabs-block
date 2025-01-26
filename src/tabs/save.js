@@ -27,14 +27,19 @@ export default function save( { attributes } ) {
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps.save( {
-		className: classnames( 'wp-block-cloudcatch-tabs__container', {
-			'items-justified-right': justifyContent === 'right',
-			'items-justified-space-between': justifyContent === 'space-between',
-			'items-justified-left': justifyContent === 'left',
-			'items-justified-center': justifyContent === 'center',
-			'is-vertical': orientation === 'vertical',
-			'no-wrap': flexWrap === 'nowrap',
-		} ),
+		className: classnames(
+			'wp-block-cloudcatch-tabs__container',
+			'wp-block-cloudcatch-tabs-is-layout-flex',
+			{
+				'items-justified-right': justifyContent === 'right',
+				'items-justified-space-between':
+					justifyContent === 'space-between',
+				'items-justified-left': justifyContent === 'left',
+				'items-justified-center': justifyContent === 'center',
+				'is-vertical': orientation === 'vertical',
+				'no-wrap': flexWrap === 'nowrap',
+			}
+		),
 		style: {
 			gridTemplateColumns:
 				orientation !== 'vertical'
