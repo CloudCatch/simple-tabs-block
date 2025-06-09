@@ -26,6 +26,11 @@ Supports horizontal and vertical tabs.
 
 == Changelog ==
 
+= 2.3.0 =
+* WP 6.8 compatibility
+* Feat: bump block compatibility to version 3
+* Accessibility: add role="tablist" to container
+
 = 2.2.1 =
 * Fix: Block gap not applying when modified globally in style book
 
