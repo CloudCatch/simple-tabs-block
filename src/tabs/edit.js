@@ -110,6 +110,7 @@ function Edit( {
 						? `repeat(${ innerBlockCount }, auto) 1fr`
 						: undefined,
 			},
+			role: 'tablist',
 		},
 		{
 			renderAppender: InnerBlocks.ButtonBlockAppender,

@@ -52,6 +52,7 @@ export default function save( { attributes } ) {
 					? `repeat(${ innerBlockCount }, auto) 1fr`
 					: undefined,
 		},
+		role: 'tablist',
 	} );
 
 	return (
