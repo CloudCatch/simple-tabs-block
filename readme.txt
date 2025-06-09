@@ -2,7 +2,7 @@
 Contributors: cloudcatch, dkjensen
 Tags: tabs, tab, block
 Requires at least: 6.5
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.0
 Stable tag: 0.0.0-development
 License: GPL-2.0-or-later
@@ -25,6 +25,11 @@ Supports horizontal and vertical tabs.
 * Set default open tab
 
 == Changelog ==
+
+= 2.3.0 =
+* WP 6.8 compatibility
+* Feat: bump block compatibility to version 3
+* Accessibility: add role="tablist" to container
 
 = 2.2.1 =
 * Fix: Block gap not applying when modified globally in style book
